@@ -2,15 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('posts', [PostController::class, 'index']);
-Route::get('posts/create', [PostController::class, 'create']);
-Route::post('posts', [PostController::class, 'store']);
-Route::get('posts/{id}/edit', [PostController::class, 'edit']);
-Route::put('posts/{id}/update', [PostController::class, 'update']);
-Route::delete('posts/{id}/destroy', [PostController::class, 'destroy']);
-Route::get('posts/{id}', [PostController::class, 'show']);
+Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::put('posts/{post}', [PostController::class, 'update'])->name('posts.update');
+Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::post('/posts/{post}/status', [PostController::class, 'updateStatus'])->name('posts.updateStatus');
+
+
+Route::get('contacts', [ContactController::class, 'index'])->name("contacts.index");
+Route::get('contacts/create', [ContactController::class, 'create']);
+Route::post('contacts', [ContactController::class, 'store'])->name("contact.store");
+//Route::get('contacts/{contact}', [PostController::class, 'show']);

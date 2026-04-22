@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ContactController;
+use App\Models\Car;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,3 +23,19 @@ Route::get('contacts', [ContactController::class, 'index'])->name("contacts.inde
 Route::get('contacts/create', [ContactController::class, 'create']);
 Route::post('contacts', [ContactController::class, 'store'])->name("contact.store");
 //Route::get('contacts/{contact}', [PostController::class, 'show']);
+
+
+
+Route::get('/display-car', function () {
+
+    $car = Car::create('BMW', 'M5', 2022);
+
+    echo "
+        <h1>Car</h1>
+        <ul>
+            <li><strong>Brand:</strong> {$car->brand}</li>
+            <li><strong>Model:</strong> {$car->model}</li>
+            <li><strong>Year:</strong> {$car->year}</li>
+        </ul>
+    ";
+});

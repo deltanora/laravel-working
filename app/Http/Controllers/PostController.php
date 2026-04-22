@@ -81,7 +81,7 @@ public function destroy(Post $post)
 public function updateStatus(Request $request, Post $post)
 {
     $request->validate([
-        'status' => 'required|string|max:255',
+        'status' => 'required|in:draft,published,archived',
     ]);
 
     $post->status = $request->status;

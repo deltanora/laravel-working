@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ContactController;
 use App\Models\Car;
+use App\Models\Event;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,5 +38,16 @@ Route::get('/display-car', function () {
     $cars = [$car1, $car2, $car3];
 
     return view('cars.show', ['allCars' => $cars]);
+});
 
+
+
+Route::get('/display-event', function (){
+
+$event1 = new Event("Vasaras koncerts",  '2024‑08‑15' , 0);
+$event2 = new Event("Rīgas maratons", " 2025‑04‑20", 5000);
+
+$events = [$event1, $event2];
+
+return view("events.show", ['allEvents' => $events]);
 });

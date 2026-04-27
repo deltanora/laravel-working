@@ -105,6 +105,12 @@ public function updateStatus(Request $request, Post $post)
 
     }
 
+    public function displayEvent()
+    {
+        $posts = Post::all();
+        return view('events.index', ['events' => $events]);
 
 
+
+}
 }

@@ -90,4 +90,11 @@ public function updateStatus(Request $request, Post $post)
     return redirect()->route('posts.show', $post->id)
                      ->with('success', 'Status updated successfully.');
 }
+
+ public function displayCar()
+    {
+        $posts = Post::all();
+        return view('cars.index', ['cars' => $cars]);
+    }
+
 }

@@ -28,14 +28,12 @@ Route::post('contacts', [ContactController::class, 'store'])->name("contact.stor
 
 Route::get('/display-car', function () {
 
-    $car = Car::create('BMW', 'M5', 2022);
+    $car1 = Car::create('Tesla', 'Model S', 2023);
+    $car2 = Car::create('Audi', 'A3', 2000);
+    $car3 = Car::create('Toyota', 'Corolla', 1999);
 
-    echo "
-        <h1>Car</h1>
-        <ul>
-            <li><strong>Brand:</strong> {$car->brand}</li>
-            <li><strong>Model:</strong> {$car->model}</li>
-            <li><strong>Year:</strong> {$car->year}</li>
-        </ul>
-    ";
+    $cars = [$car1, $car2, $car3];
+
+    return view('cars.show', ['allCars' => $cars]);
+
 });

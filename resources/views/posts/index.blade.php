@@ -11,10 +11,19 @@
                 <div>
                     <a href="{{ route('posts.show', $post->id) }}">Show</a>
                     <a href="{{ route('posts.edit', $post->id) }}">Edit</a>
-                    <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+
+
+                    <form action="{{ route('posts.copy', $post->id) }}" method="post">
                         @csrf
+                        <input type="submit" value="Copy">
+                    </form>
+
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+
+                    @csrf
                         @method('delete')
                         <input type="submit" value="Delete">
+
                     </form>
                 </div>
             </li>

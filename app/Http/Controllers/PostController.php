@@ -97,4 +97,14 @@ public function updateStatus(Request $request, Post $post)
         return view('cars.index', ['cars' => $cars]);
     }
 
+    public function copy(Post $post){
+        // Post::create();
+        $posts = Post::create(["title"=> "Copy of " . $post["title"], "content"=> $post["content"]]);
+
+        return view('posts.copy', ['posts' => $posts]);
+
+    }
+
+
+
 }

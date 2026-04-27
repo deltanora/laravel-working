@@ -17,6 +17,8 @@ Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.ed
 Route::put('posts/{post}', [PostController::class, 'update'])->name('posts.update');
 Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 Route::post('/posts/{post}/status', [PostController::class, 'updateStatus'])->name('posts.updateStatus');
+Route::post('/posts/{post}/copy', [PostController::class, 'copy'])->name('posts.copy');
+
 
 
 Route::get('contacts', [ContactController::class, 'index'])->name("contacts.index");
